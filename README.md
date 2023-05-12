@@ -1,4 +1,5 @@
-# My Potassium App
+# mileszim/banana-dev-sentence-transformers-multilang-v2
+
 This is a Potassium HTTP server, created with `banana init` CLI
 
 ### Testing
