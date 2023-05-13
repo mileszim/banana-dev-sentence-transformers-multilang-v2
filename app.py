@@ -21,6 +21,7 @@ def init():
     model = SentenceTransformer(
         model_name_or_path='sentence-transformers/distiluse-base-multilingual-cased-v2',
         device=device,
+        cache_folder='model'
     )
    
     context = {
