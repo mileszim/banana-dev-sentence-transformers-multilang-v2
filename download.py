@@ -4,10 +4,15 @@
 from sentence_transformers import SentenceTransformer
 
 def download_model():
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     # do a dry run of loading the huggingface model, which will download weights
-    SentenceTransformer(
-        model_name_or_path='sentence-transformers/distiluse-base-multilingual-cased-v2'
-    ).save('model')
+    model = SentenceTransformer(
+        model_name_or_path='sentence-transformers/distiluse-base-multilingual-cased-v2',
+        device = device,
+        cache_folder='model'
+    )
+    # dry run for download
+    model.encode(['hello'])
 
 if __name__ == "__main__":
     download_model()
