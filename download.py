@@ -1,4 +1,5 @@
 # This file runs during container build time to get model weights built into the container
+import torch
 
 # In this example: A Huggingface BERT model
 from sentence_transformers import SentenceTransformer
