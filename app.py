@@ -32,16 +32,27 @@ def init():
 # @app.handler runs for every call
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
-    sentences = request.json.get("sentences")
     model = context.get("model")
+
+    # get attributes
+    sentences = request.json.get("sentences")
+    batch_size = request.json.get("batch_size")
+    batch_size = int(batch_size) if batch_size else 64
+
     # make it array if its not
     if not isinstance(sentences, list):
         sentences = [sentences]
-    print(sentences)
-    embeddings = model.encode(sentences)
-    res = {'sentences': sentences, 'embeddings': embeddings}
-    print(res)
+    
+    # get embeddings
+    embeddings = model.encode(
+        sentences=sentences,
+        batch_size=batch_size
+    )
 
+    # format response
+    res = {'sentences': sentences, 'embeddings': embeddings}
+
+    # return response
     return Response(
         json = json.dumps(res, cls=NumpyArrayEncoder), 
         status=200

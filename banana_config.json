@@ -1,8 +1,9 @@
 {
   "name": "embedding-multilang",
-  "category": "sentence-transformer",
+  "category": "Natural Language",
   "example_input": {
-    "sentences": ["Hello, world!"]
+    "sentences": ["Hello, world!"],
+    "batch_size": 64
   },
   "example_output": {
     "sentences": ["Hello, world!"],
